@@ -1,5 +1,6 @@
 package com.gomarket.GoMarket.Controller;
 
+import com.gomarket.GoMarket.DTO.CreateProductRequest;
 import com.gomarket.GoMarket.Model.Product;
 import com.gomarket.GoMarket.Service.ProductService;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public Product create(@RequestBody Product product) {
+    public Product create(@RequestBody CreateProductRequest product) {
         return productService.create(product);
     }
 
