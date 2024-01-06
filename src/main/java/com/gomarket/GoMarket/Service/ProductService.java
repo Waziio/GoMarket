@@ -1,12 +1,12 @@
 package com.gomarket.GoMarket.Service;
 
+import com.gomarket.GoMarket.Exception.NotFoundException;
 import com.gomarket.GoMarket.Model.Product;
 import com.gomarket.GoMarket.Repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -17,8 +17,8 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getById(Long id) {
-        return productRepository.findById(id);
+    public Product getById(Long id) {
+        return productRepository.findById(id).orElseThrow(() -> new NotFoundException("Product not found"));
     }
 
     public Product create(Product product) {
@@ -32,7 +32,7 @@ public class ProductService {
                     p.setDescription(product.getDescription());
                     p.setPrice(product.getPrice());
                     return productRepository.save(p);
-                }).orElseThrow(() -> new RuntimeException("Product not found"));
+                }).orElseThrow(() -> new NotFoundException("Product not found"));
     }
 
     public String delete(Long id) {
