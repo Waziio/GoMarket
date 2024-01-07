@@ -1,16 +1,21 @@
 package com.gomarket.GoMarket.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ProductCharacteristic")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductCharacteristic {
+@Data
+public class ProductCharacteristic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +26,12 @@ public class ProductCharacteristic {
     @Column(nullable = false)
     private String value;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "characteristic_id")
     private Characteristic characteristic;

@@ -1,4 +1,4 @@
-package com.gomarket.GoMarket.DTO.Product.Create;
+package com.gomarket.GoMarket.DTO.Product.Response;
 
 import com.gomarket.GoMarket.Model.ProductCharacteristic;
 import lombok.Data;

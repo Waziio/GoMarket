@@ -1,7 +1,5 @@
-package com.gomarket.GoMarket.DTO;
+package com.gomarket.GoMarket.DTO.Category;
 
-
-import com.gomarket.GoMarket.Model.Characteristic;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +9,5 @@ import java.util.List;
 @Setter
 public class CreateCategoryDto {
     private String name;
-    private List<Characteristic> characteristics
+    private List<CharacteristicDto> characteristics;
 }
