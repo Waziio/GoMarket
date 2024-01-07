@@ -1,16 +1,20 @@
 package com.gomarket.GoMarket.Controller;
 
+
+import com.gomarket.GoMarket.DTO.Product.Create.CreateProductDto;
+import com.gomarket.GoMarket.DTO.Product.Response.ProductResponseDto;
 import com.gomarket.GoMarket.Model.Product;
 import com.gomarket.GoMarket.Service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/product")
 @AllArgsConstructor
+@Validated
 public class ProductController {
     private final ProductService productService;
 
@@ -20,12 +24,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> getById(@PathVariable Long id) {
+    public Product getById(@PathVariable Long id) {
         return productService.getById(id);
     }
 
     @PostMapping("")
-    public Product create(@RequestBody Product product) {
+    public ProductResponseDto create(@RequestBody CreateProductDto product) {
         return productService.create(product);
     }
 
